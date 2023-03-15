@@ -1,0 +1,29 @@
+diff --git a/node_modules/lottie-react-native/lottie-react-native.podspec b/node_modules/lottie-react-native/lottie-react-native.podspec
+index 72e6d71..696e6e0 100644
+--- a/node_modules/lottie-react-native/lottie-react-native.podspec
++++ b/node_modules/lottie-react-native/lottie-react-native.podspec
+@@ -22,5 +22,5 @@ Pod::Spec.new do |s|
+   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
+   s.swift_version = "5.0"
+   s.dependency 'React-Core'
+-  s.dependency 'lottie-ios', '~> 3.2.3'
++  s.dependency 'lottie-ios', '~> 3.4.0'
+ end
+diff --git a/node_modules/lottie-react-native/src/ios/LottieReactNative/ContainerView.swift b/node_modules/lottie-react-native/src/ios/LottieReactNative/ContainerView.swift
+index f6680f8..1d8188b 100644
+--- a/node_modules/lottie-react-native/src/ios/LottieReactNative/ContainerView.swift
++++ b/node_modules/lottie-react-native/src/ios/LottieReactNative/ContainerView.swift
+@@ -50,7 +50,12 @@ class ContainerView: RCTView {
+             return
+         }
+         
+-        let starAnimationView = AnimationView()
++        let starAnimationView = AnimationView(
++            configuration: Lottie.LottieConfiguration(
++                renderingEngine: .automatic,
++                decodingStrategy: .dictionaryBased
++            )
++        )
+         starAnimationView.animation = animation
+         replaceAnimationView(next: starAnimationView)
+     }
